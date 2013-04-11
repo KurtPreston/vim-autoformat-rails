@@ -24,7 +24,7 @@ Autoformatting from console
 If you want to use vim-autoformat-rails to format multiple files, you can use the included **autoformat** binary.  Just copy it to your path (i.e. ```/usr/local/bin```), then you can run commands such as:
 
 ```
-autoformat FILENAME # Format FILENAME 
+autoformat FILENAME # Format FILENAME
 autoformat '*.rb'   # Format all Ruby files in the directory
 ```
 
@@ -38,10 +38,10 @@ Examples
 ### CSS
 Before:
 
-```
-#selector, input:hover  
+```css
+#selector, input:hover
 
-{ 
+{
 
   font-size:13px;
      height     :        20px;     }
@@ -51,10 +51,10 @@ Before:
 
 After:
 
-```
+```css
 #selector, input:hover {
   font-size: 13px;
-  height: 20px;     
+  height: 20px;
 }
 
 ```
@@ -62,7 +62,7 @@ After:
 ### Ruby
 Before:
 
-```
+```ruby
 def test_function(x)
 
          if x > 2
@@ -70,7 +70,7 @@ def test_function(x)
            return false
          else
              return true
-         
+
          end
 
      end
@@ -79,7 +79,7 @@ def test_function(x)
 
 After:
 
-```
+```ruby
 def test_function(x)
   if x > 2
     return false
