@@ -1,1 +1,1 @@
-find . -wholename ".git/*" -prune -o -iwholename "./$1" -type f -regex ".*.[rb,erb,css,js,coffee,scss,sass,feature]" -exec vim -n -c ":call AutoFormatRails() | :wq" {} \;
+find . -not -path '*/.*/*' -iwholename"./$1" -type f -regex ".*.[rb,erb,css,js,coffee,scss,sass,feature]" -exec vim -n -c ":call AutoFormatRails() | :wq" {} \;
