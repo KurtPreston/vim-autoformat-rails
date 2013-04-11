@@ -1,4 +1,4 @@
-function AutoFormat()
+function! AutoFormatRails()
   "Save cursor position
   let l:winview = winsaveview()
 
@@ -83,4 +83,4 @@ function AutoFormat()
 endfunction
 
 " Call AutoFormat by typing \==
-map <silent> <LocalLeader>== :silent call AutoFormat()<CR>
+map <silent> <LocalLeader>== :silent call AutoFormatRails()<CR>
