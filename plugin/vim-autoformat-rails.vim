@@ -5,6 +5,12 @@ function! AutoFormatRails()
   "Remove trailing whitespace
   %s/\s\+$//e
 
+  "CSS-only fixes that must ren before indentation
+  if expand('%:e') == 'css' || expand('%:e') == 'scss'
+    "Close } on separate line unless single-line style
+    %s/\([^{]\)\(.*\)\}/\1\2\r}/e
+  endif
+
   "Perform indentation
   norm gg=G
 
@@ -57,13 +63,13 @@ function! AutoFormatRails()
   "CSS-only fixes
   if expand('%:e') == 'css' || expand('%:e') == 'scss'
     "Insert a space after all non-selector colons
-    %s/:\s*\(.*\)\s*;/: \1;/e
+    %s/\s*:\s*\(.*\)\s*;/: \1;/e
 
     "Always remove spaces before selector colons
     %s/\(\w*:\)\s*\(.*\)\s*{/\1\2 {/e
 
     "Always insert { character on same line as declaration
-    %s/\s*\n*{/ {/e
+    %s/\s*\n*{\n*/ {\r/e
 
     "Insert a return character after all }
     %s/\}\n*/}\r/e
