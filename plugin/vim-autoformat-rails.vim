@@ -81,7 +81,7 @@ function! AutoFormatRails()
     %s/\}\n*\(\s*[a-z#\.&\*\@]\)/}\r\r\1/e
 
     "Add a space above comment lines
-    %s/\([;}]\)\n\(\s*\)\/\//\1\r\r\2\/\//e
+    %s/\([;}]\)\n\(\s*\)\/\([\/\*]\)/\1\r\r\2\/\3/e
   endif
 
   "Remove trailing newlines
