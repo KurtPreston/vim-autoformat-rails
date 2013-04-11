@@ -81,3 +81,6 @@ function AutoFormat()
   "Restore cursor position
   call winrestview(l:winview)
 endfunction
+
+" Call AutoFormat by typing \==
+map <silent> <LocalLeader>== :silent call AutoFormat()<CR>
