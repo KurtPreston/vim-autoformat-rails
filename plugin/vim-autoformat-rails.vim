@@ -2,14 +2,14 @@ function! AutoFormatRails()
   "Save cursor position
   let l:winview = winsaveview()
 
-  "Remove trailing whitespace
-  %s/\s\+$//e
-
-  "CSS-only fixes that must ren before indentation
+  "CSS-only fixes that must run before indentation
   if expand('%:e') == 'css' || expand('%:e') == 'scss'
     "Close } on separate line unless single-line style
     %s/\([^{]\)\(.*\)\}/\1\2\r}/e
   endif
+
+  "Remove trailing whitespace
+  %s/\s\+$//e
 
   "Perform indentation
   norm gg=G
