@@ -5,7 +5,10 @@ function! AutoFormatRails()
   "CSS-only fixes that must run before indentation
   if expand('%:e') == 'css' || expand('%:e') == 'scss'
     "Close } on separate line unless single-line style
-    %s/\([^{]\)\(.*\)\}/\1\2\r}/e
+    %s/\({.*\)\@<!}/\r}/e
+
+    "Remove all empty lines before }
+    %s/\(^\s*\n\)\+\s*}/}/e
   endif
 
   "Remove trailing whitespace
@@ -69,7 +72,7 @@ function! AutoFormatRails()
     %s/\(\w*:\)\s*\(.*\)\s*{/\1\2 {/e
 
     "Always insert { character on same line as declaration
-    %s/\s*\n*{\n*/ {\r/e
+    %s/\(\w\)\n*\s*{/\1 {/e
 
     "Insert a return character after all }
     %s/\}\n*/}\r/e
