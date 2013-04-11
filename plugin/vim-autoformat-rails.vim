@@ -29,6 +29,9 @@ function! AutoFormatRails()
     "Remove all newlines before 'end'
     %s/^\n*\( *\)end/\1end/e
 
+    "Remove extra lines after 'if'
+    %s/^\(\s*if \)\(.*\)\n\n*/\1\2\r/e
+
     "Remove all newlines before 'else'
     %s/^\n*\( *\)else/\1else/e
   endif
