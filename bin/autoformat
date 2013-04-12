@@ -1,1 +1,9 @@
-vim $1 -n -c ':bufdo execute ":silent call AutoFormatRails()" | update | :q'
+# Get selected files
+ignore_hidden_folders="-not -path '*/.*/*'"
+ignore_tmp_dir="-not -path './tmp/*'"
+select_extensions="-type f \( -iname \*.rb -o -iname \*.erb -o -iname \*.css -o -iname \*.js -o -iname \*.coffee -o -iname \*.scss -o -iname \*.sass -o -iname \*.feature \)"
+find_command="find . $ignore_hidden_folders $ignore_tmp_dir -iwholename \"./$1\" $select_extensions"
+
+# Run VIM autoformatter against all those files
+format_command="vim `eval $find_command` -n -c ':bufdo execute \":silent call AutoFormatRails() | update\"' -c \"q\""
+eval $format_command
