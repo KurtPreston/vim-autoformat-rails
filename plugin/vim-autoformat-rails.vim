@@ -74,6 +74,9 @@ function! AutoFormatRails()
     "Always insert { character on same line as declaration
     %s/\(\w\)\n*\s*{/\1 {/e
 
+    "Remove empty newlines after {
+    %s/{\n\n*/{\r/e
+
     "Insert a return character after all }
     %s/\}\n*/}\r/e
 
