@@ -18,5 +18,5 @@ done
 
 # Run VIM autoformatter against all those files
 # Note: autoformatrails_tmp is an ugly hack because VIM always parses the first file incorrectly
-format_command="vim /tmp/autoformatrails_tmp $files -n -c ':set nomore | :bufdo execute \":silent call AutoFormatRails() | update\"' -c \"q\""
+format_command="vim /tmp/autoformatrails_tmp $files -n -c ':set nomore | :bufdo execute \":silent call AutoFormatRails() | update\"' -c 'q'"
 eval $format_command
