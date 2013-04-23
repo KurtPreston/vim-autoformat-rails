@@ -2,8 +2,8 @@ function! AutoFormatRails()
   "Save cursor position
   let l:winview = winsaveview()
 
-  "CSS-only fixes that must run before indentation
-  if expand('%:e') == 'css' || expand('%:e') == 'scss'
+  "CSS/JS fixes that must run before indentation
+  if expand('%:e') == 'css' || expand('%:e') == 'scss' || expand('%:e') == 'js'
     "Close } on separate line unless single-line style
     %s/\({.*\)\@<!}/\r}/e
 
@@ -63,14 +63,8 @@ function! AutoFormatRails()
     %s/\(@\w\+\)\n\n  Scenario/\1\r  Scenario/e
   endif
 
-  "CSS-only fixes
-  if expand('%:e') == 'css' || expand('%:e') == 'scss'
-    "Insert a space after all non-selector colons
-    %s/\s*:\s*\(.*\)\s*;/: \1;/e
-
-    "Always remove spaces before selector colons
-    %s/\(\w*:\)\s*\(.*\)\s*{/\1\2 {/e
-
+  "CSS/JS fixes
+  if expand('%:e') == 'css' || expand('%:e') == 'scss' || expand('%:e') == 'js'
     "Always insert { character on same line as declaration
     %s/\(\w\)\n*\s*{/\1 {/e
 
@@ -78,10 +72,19 @@ function! AutoFormatRails()
     %s/{\n\n*/{\r/e
 
     "Insert a return character after all }
-    %s/\}\n*/}\r/e
+    %s/\}\(;?\)\n*/}\1\r/e
 
     "Insert a second return character between } and other styles
-    %s/\}\n*\(\s*[a-z#\.&\*\@]\)/}\r\r\1/e
+    %s/\}\(;\)\n*\(\s*[a-z#\.&\*\@]\)/}\1\r\r\2/e
+  end
+
+  "CSS-only fixes
+  if expand('%:e') == 'css' || expand('%:e') == 'scss'
+    "Insert a space after all non-selector colons
+    %s/\s*:\s*\(.*\)\s*;/: \1;/e
+
+    "Always remove spaces before selector colons
+    %s/\(\w*:\)\s*\(.*\)\s*{/\1\2 {/e
 
     "Add a space above comment lines
     %s/\([;}]\)\n\(\s*\)\/\([\/\*]\)/\1\r\r\2\/\3/e
