@@ -83,9 +83,6 @@ function! AutoFormatRails()
     "Insert a space after all non-selector colons
     %s/\s*:\s*\(.*\)\s*;/: \1;/e
 
-    "Always remove spaces before selector colons
-    %s/\(\w*:\)\s*\(.*\)\s*{/\1\2 {/e
-
     "Add a space above comment lines
     %s/\([;}]\)\n\(\s*\)\/\([\/\*]\)/\1\r\r\2\/\3/e
   endif
