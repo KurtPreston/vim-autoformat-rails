@@ -33,10 +33,10 @@ function! AutoFormatRails()
     %s/^\(\s*def \)\(.*\)\n\n*/\1\2\r/e
 
     "Insert two newlines after any 'end'
-    %s/end\n\n*/end\r\r/e
+    %s/end\n\n*/end\r\r/eI
 
     "Remove all newlines before 'end'
-    %s/^\n*\( *\)end/\1end/e
+    %s/^\n*\( *\)end/\1end/eI
 
     "Remove extra lines after 'if'
     %s/^\(\s*if \)\(.*\)\n\n*/\1\2\r/e
